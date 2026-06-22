@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28圈 · 简明指南与场景说明</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5fbfc;
+            color: #1e2a36;
+            line-height: 1.6;
+            padding: 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container{
+            max-width: 960px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+        /* 顶部导航 */
+        .nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: #ffffffd9;
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            box-shadow: 0 4px 10px rgba(0,50,40,0.04);
+            margin-bottom: 2rem;
+            border: 1px solid #cbe6e2;
+        }
+        .nav-brand{
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #1b6b65;
+            letter-spacing: -0.01em;
+        }
+        .nav-links{
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.9rem;
+        }
+        .nav-links a{
+            text-decoration: none;
+            color: #2d4b52;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+        .nav-links a:hover{
+            color: #1b9b8f;
+        }
+        .nav-links .active{
+            color: #0f7a70;
+            border-bottom: 2px solid #2bb5a3;
+            padding-bottom: 2px;
+        }
+        /* hero */
+        .hero{
+            background: linear-gradient(145deg, #e2f4f0 0%, #d0ece6 100%);
+            border-radius: 36px;
+            padding: 2.2rem 2rem 2.5rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 6px 14px rgba(24, 94, 86, 0.06);
+        }
+        .hero h1{
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #054d46;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+        .hero p{
+            font-size: 1.05rem;
+            max-width: 600px;
+            color: #1f4542;
+            margin-bottom: 1.2rem;
+        }
+        .hero .tagline{
+            display: inline-block;
+            background: rgba(255,255,255,0.4);
+            backdrop-filter: blur(2px);
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #07675b;
+            border: 1px solid #abd9d1;
+        }
+        /* 卡片网格（三个场景） */
+        .section-title{
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0a4f49;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid #2bb5a3;
+            padding-left: 1rem;
+        }
+        .cards-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.8rem;
+        }
+        .card{
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 1.5rem 1.2rem 1.8rem;
+            box-shadow: 0 6px 12px rgba(0,60,50,0.04);
+            border: 1px solid #d2eae5;
+            transition: all 0.15s ease;
+        }
+        .card:hover{
+            border-color: #7ecfc2;
+            box-shadow: 0 8px 20px rgba(30, 100, 85, 0.08);
+        }
+        .card h3{
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #07554c;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card h3 span{
+            background: #b1dcd3;
+            color: #043f38;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 40px;
+            padding: 0.05rem 0.7rem;
+        }
+        .card p{
+            font-size: 0.95rem;
+            color: #2b4b47;
+            margin-bottom: 0.5rem;
+        }
+        .card .meta-note{
+            font-size: 0.8rem;
+            color: #52857b;
+            margin-top: 0.6rem;
+            border-top: 1px dashed #c6dfd9;
+            padding-top: 0.5rem;
+        }
+        /* 常见说明 / FAQ 区域 */
+        .faq-area{
+            background: #f1faf8;
+            border-radius: 32px;
+            padding: 1.8rem 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #c1ddd6;
+        }
+        .faq-item{
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #d0e5e0;
+        }
+        .faq-item:last-child{
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-q{
+            font-weight: 600;
+            color: #07554c;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+        .faq-a{
+            font-size: 0.9rem;
+            color: #2a534c;
+            padding-left: 0.2rem;
+        }
+        .faq-area .inline-link{
+            color: #0b7b6c;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+        /* 提醒/提示条 */
+        .tip-banner{
+            background: #d7f1eb;
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.2rem;
+            border: 1px solid #9bcbc1;
+        }
+        .tip-banner span{
+            font-size: 1.2rem;
+        }
+        .tip-banner p{
+            font-size: 0.95rem;
+            color: #12443e;
+            flex: 1;
+        }
+        .tip-banner a{
+            color: #03453c;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        /* 页脚 */
+        .footer{
+            text-align: center;
+            padding: 1.2rem 0 0.8rem;
+            font-size: 0.82rem;
+            color: #577a72;
+            border-top: 1px solid #cde0db;
+            margin-top: 1.5rem;
+        }
+        /* 响应式 */
+        @media (max-width: 500px){
+            body{padding: 0.8rem;}
+            .nav{flex-direction: column; gap: 0.5rem; padding:0.8rem 0.6rem;}
+            .nav-links{gap:1rem; flex-wrap: wrap; justify-content: center;}
+            .hero h1{font-size: 1.6rem;}
+            .hero{padding: 1.8rem 1.2rem;}
+            .cards-grid{grid-template-columns: 1fr;}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 顶部导航 -->
+    <nav class="nav">
+        <div class="nav-brand">28·guide</div>
+        <div class="nav-links">
+            <a href="#" class="active">首页</a>
+            <a href="#">指南</a>
+            <a href="#">场景</a>
+            <a href="#">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero 简明介绍 -->
+    <div class="hero">
+        <h1>关于 28圈 · 简明指南</h1>
+        <p>一份整理好的使用参考，从基本访问到三种常见场景，帮助你快速适应平台环境。</p>
+        <div class="tagline">🧭 轻量导航 · 要点提醒</div>
+    </div>
+
+    <!-- 三个场景模块（网格卡片） -->
+    <h2 class="section-title">🧩 三种典型场景</h2>
+    <div class="cards-grid">
+        <div class="card">
+            <h3>🖥️ 日常浏览 <span>场景一</span></h3>
+            <p>打开浏览器，直接访问 <a href="https://webs-28loop.com" style="color:#0a7e6e;font-weight:600;text-decoration:underline;text-underline-offset:2px;">28圈</a> 即可进入主界面。建议使用最新版 Chrome、Edge 或 Safari，以获得稳定的页面渲染与交互响应。</p>
+            <div class="meta-note">💡 保持网络通畅，部分资源加载依赖 CDN。</div>
+        </div>
+        <div class="card">
+            <h3>📱 移动设备 <span>场景二</span></h3>
+            <p>手机或平板用户同样可通过浏览器访问 <a href="https://webs-28loop.com" style="color:#0a7e6e;font-weight:600;text-decoration:underline;">28圈</a>。界面已针对触控操作调整，横向滑动与点击区域均经过适配，体验流畅。</p>
+            <div class="meta-note">📲 推荐开启竖屏锁定，避免意外旋转。</div>
+        </div>
+        <div class="card">
+            <h3>🔐 定期查阅 <span>场景三</span></h3>
+            <p>如果你需要随时获取最新信息或公告，可以把 <a href="https://webs-28loop.com" style="color:#0a7e6e;font-weight:600;text-decoration:underline;">28圈</a> 加入浏览器书签。这样每次更新或维护通知都不会错过。</p>
+            <div class="meta-note">⏱️ 建议每周刷新一次，以同步内容变更。</div>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-area">
+        <h3 style="font-size:1.2rem;font-weight:600;color:#07554c;margin-bottom:1rem;">📌 常见简要说明</h3>
+        <div class="faq-item">
+            <div class="faq-q">▪ 是否需要在访问前做任何设置？</div>
+            <div class="faq-a">通常不需要。直接访问 <a href="https://webs-28loop.com" class="inline-link">28圈</a> 即可，若遇到页面加载异常，可先检查网络连接或尝试清除浏览器缓存。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">▪ 平台支持哪些语言界面？</div>
+            <div class="faq-a">当前以中文内容为主，部分功能模块可能包含英文标签。后续如有扩展会通过公告说明。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">▪ 是否有桌面客户端或专用应用？</div>
+            <div class="faq-a">目前主要通过浏览器访问 <a href="https://webs-28loop.com" class="inline-link">28圈</a> 使用全部功能，暂无独立客户端，移动端可添加至主屏幕作为快捷方式。</div>
+        </div>
+    </div>
+
+    <!-- 访问提醒条 -->
+    <div class="tip-banner">
+        <span>⚡</span>
+        <p><strong>访问提醒：</strong> 请务必通过官方地址 <a href="https://webs-28loop.com">28圈</a> 进入，避免使用第三方非授权入口。如遇页面样式异常，可尝试强制刷新 (Ctrl+F5) 或更换浏览器。</p>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>本页为信息汇总 · 内容仅供参考 · 实际以平台最新版本为准</p>
+    </div>
+
+</div>
+</body>
+</html>
